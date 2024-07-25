@@ -156,9 +156,8 @@ jobs:
       # 上传macOS x86_64平台的构建产物到发布页面
       - name: Upload macOS x86_64 artifact
         uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }} # 使用GitHub令牌进行身份验证
         with:
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }} # 使用GitHub令牌进行身份验证
           upload_url: ${{ steps.create_release.outputs.upload_url }} # 使用创建发布步骤生成的上传URL
           asset_path: artifacts/macos/imgtool # 上传的文件路径
           asset_name: imgtool-macos-x86_64 # 上传的文件名
@@ -167,9 +166,8 @@ jobs:
       # 上传Windows x86_64平台的构建产物到发布页面
       - name: Upload Windows x86_64 artifact
         uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }} # 使用GitHub令牌进行身份验证
         with:
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }} # 使用GitHub令牌进行身份验证
           upload_url: ${{ steps.create_release.outputs.upload_url }} # 使用创建发布步骤生成的上传URL
           asset_path: artifacts/windows/imgtool.exe # 上传的文件路径
           asset_name: imgtool-windows-x86_64.exe # 上传的文件名
@@ -178,9 +176,8 @@ jobs:
       # 上传Linux aarch64平台的构建产物到发布页面
       - name: Upload Linux aarch64 artifact
         uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }} # 使用GitHub令牌进行身份验证
         with:
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }} # 使用GitHub令牌进行身份验证
           upload_url: ${{ steps.create_release.outputs.upload_url }} # 使用创建发布步骤生成的上传URL
           asset_path: artifacts/ubuntu/imgtool # 上传的文件路径
           asset_name: imgtool-linux-aarch64 # 上传的文件名
@@ -189,9 +186,8 @@ jobs:
       # 上传macOS aarch64平台的构建产物到发布页面
       - name: Upload macOS aarch64 artifact
         uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }} # 使用GitHub令牌进行身份验证
         with:
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }} # 使用GitHub令牌进行身份验证
           upload_url: ${{ steps.create_release.outputs.upload_url }} # 使用创建发布步骤生成的上传URL
           asset_path: artifacts/macos/imgtool # 上传的文件路径
           asset_name: imgtool-macos-aarch64 # 上传的文件名
@@ -200,9 +196,8 @@ jobs:
       # 上传Windows aarch64平台的构建产物到发布页面
       - name: Upload Windows aarch64 artifact
         uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }} # 使用GitHub令牌进行身份验证
         with:
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }} # 使用GitHub令牌进行身份验证
           upload_url: ${{ steps.create_release.outputs.upload_url }} # 使用创建发布步骤生成的上传URL
           asset_path: artifacts/windows/imgtool.exe # 上传的文件路径
           asset_name: imgtool-windows-aarch64.exe # 上传的文件名
