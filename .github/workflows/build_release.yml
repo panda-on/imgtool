@@ -130,9 +130,8 @@ jobs:
       - name: Create release
         id: create_release
         uses: actions/create-release@v1 # 创建GitHub release
-        env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }} # 使用GitHub令牌进行身份验证
         with:
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }} # 使用GitHub令牌进行身份验证
           tag_name: ${{ github.ref }} # 使用推送的标签名
           release_name: Release ${{ github.ref }} # 使用推送的标签名作为发布名称
           body: |
@@ -145,9 +144,8 @@ jobs:
       # 上传Linux x86_64平台的构建产物到发布页面
       - name: Upload Linux x86_64 artifact
         uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }} # 使用GitHub令牌进行身份验证
         with:
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }} # 使用GitHub令牌进行身份验证
           upload_url: ${{ steps.create_release.outputs.upload_url }} # 使用创建发布步骤生成的上传URL
           asset_path: artifacts/ubuntu/imgtool # 上传的文件路径
           asset_name: imgtool-linux-x86_64 # 上传的文件名
