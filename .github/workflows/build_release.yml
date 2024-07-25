@@ -34,48 +34,48 @@ jobs:
         if: matrix.os == 'ubuntu-latest' && matrix.arch == 'x86_64'
         uses: actions/upload-artifact@v2
         with:
-          name: ubuntu-latest-heaven
-          path: target/release/heaven
+          name: ubuntu-latest-imgtool
+          path: target/release/imgtool
 
       # 上传Linux aarch64平台的构建产物
       - name: Upload artifact (Linux aarch64)
         if: matrix.os == 'ubuntu-latest' && matrix.arch == 'aarch64'
         uses: actions/upload-artifact@v2
         with:
-          name: ubuntu-latest-heaven-aarch64
-          path: target/release/heaven
+          name: ubuntu-latest-imgtool-aarch64
+          path: target/release/imgtool
 
       # 上传macOS x86_64平台的构建产物
       - name: Upload artifact (macOS)
         if: matrix.os == 'macos-latest' && matrix.arch == 'x86_64'
         uses: actions/upload-artifact@v2
         with:
-          name: macos-latest-heaven
-          path: target/release/heaven
+          name: macos-latest-imgtool
+          path: target/release/imgtool
 
       # 上传macOS aarch64平台的构建产物
       - name: Upload artifact (macOS aarch64)
         if: matrix.os == 'macos-latest' && matrix.arch == 'aarch64'
         uses: actions/upload-artifact@v2
         with:
-          name: macos-latest-heaven-aarch64
-          path: target/release/heaven
+          name: macos-latest-imgtool-aarch64
+          path: target/release/imgtool
 
       # 上传Windows x86_64平台的构建产物
       - name: Upload artifact (Windows)
         if: matrix.os == 'windows-latest' && matrix.arch == 'x86_64'
         uses: actions/upload-artifact@v2
         with:
-          name: windows-latest-heaven
-          path: target/release/heaven.exe
+          name: windows-latest-imgtool
+          path: target/release/imgtool.exe
 
       # 上传Windows aarch64平台的构建产物
       - name: Upload artifact (Windows aarch64)
         if: matrix.os == 'windows-latest' && matrix.arch == 'aarch64'
         uses: actions/upload-artifact@v2
         with:
-          name: windows-latest-heaven-aarch64
-          path: target/release/heaven.exe
+          name: windows-latest-imgtool-aarch64
+          path: target/release/imgtool.exe
 
   release:
     runs-on: ubuntu-latest # 定义作业运行在Ubuntu系统上
@@ -89,42 +89,42 @@ jobs:
       - name: Download artifact (Linux-x86_64)
         uses: actions/download-artifact@v2
         with:
-          name: ubuntu-latest-heaven
+          name: ubuntu-latest-imgtool
           path: artifacts/ubuntu
 
       # 下载macOS x86_64平台的构建产物
       - name: Download artifact (macOS-x86_64)
         uses: actions/download-artifact@v2
         with:
-          name: macos-latest-heaven
+          name: macos-latest-imgtool
           path: artifacts/macos
 
       # 下载Windows x86_64平台的构建产物
       - name: Download artifact (Windows-x86_64)
         uses: actions/download-artifact@v2
         with:
-          name: windows-latest-heaven
+          name: windows-latest-imgtool
           path: artifacts/windows
 
       # 下载Linux aarch64平台的构建产物
       - name: Download artifact (Linux-aarch64)
         uses: actions/download-artifact@v2
         with:
-          name: ubuntu-latest-heaven-aarch64
+          name: ubuntu-latest-imgtool-aarch64
           path: artifacts/ubuntu
 
       # 下载macOS aarch64平台的构建产物
       - name: Download artifact (macOS-aarch64)
         uses: actions/download-artifact@v2
         with:
-          name: macos-latest-heaven-aarch64
+          name: macos-latest-imgtool-aarch64
           path: artifacts/macos
 
       # 下载Windows aarch64平台的构建产物
       - name: Download artifact (Windows-aarch64)
         uses: actions/download-artifact@v2
         with:
-          name: windows-latest-heaven-aarch64
+          name: windows-latest-imgtool-aarch64
           path: artifacts/windows
 
       - name: Create release
@@ -149,8 +149,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }} # 使用GitHub令牌进行身份验证
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # 使用创建发布步骤生成的上传URL
-          asset_path: artifacts/ubuntu/heaven # 上传的文件路径
-          asset_name: heaven-linux-x86_64 # 上传的文件名
+          asset_path: artifacts/ubuntu/imgtool # 上传的文件路径
+          asset_name: imgtool-linux-x86_64 # 上传的文件名
           asset_content_type: application/octet-stream # 文件内容类型
 
       # 上传macOS x86_64平台的构建产物到发布页面
@@ -160,8 +160,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }} # 使用GitHub令牌进行身份验证
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # 使用创建发布步骤生成的上传URL
-          asset_path: artifacts/macos/heaven # 上传的文件路径
-          asset_name: heaven-macos-x86_64 # 上传的文件名
+          asset_path: artifacts/macos/imgtool # 上传的文件路径
+          asset_name: imgtool-macos-x86_64 # 上传的文件名
           asset_content_type: application/octet-stream # 文件内容类型
 
       # 上传Windows x86_64平台的构建产物到发布页面
@@ -171,8 +171,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }} # 使用GitHub令牌进行身份验证
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # 使用创建发布步骤生成的上传URL
-          asset_path: artifacts/windows/heaven.exe # 上传的文件路径
-          asset_name: heaven-windows-x86_64.exe # 上传的文件名
+          asset_path: artifacts/windows/imgtool.exe # 上传的文件路径
+          asset_name: imgtool-windows-x86_64.exe # 上传的文件名
           asset_content_type: application/octet-stream # 文件内容类型
 
       # 上传Linux aarch64平台的构建产物到发布页面
@@ -182,8 +182,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }} # 使用GitHub令牌进行身份验证
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # 使用创建发布步骤生成的上传URL
-          asset_path: artifacts/ubuntu/heaven # 上传的文件路径
-          asset_name: heaven-linux-aarch64 # 上传的文件名
+          asset_path: artifacts/ubuntu/imgtool # 上传的文件路径
+          asset_name: imgtool-linux-aarch64 # 上传的文件名
           asset_content_type: application/octet-stream # 文件内容类型
 
       # 上传macOS aarch64平台的构建产物到发布页面
@@ -193,8 +193,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }} # 使用GitHub令牌进行身份验证
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # 使用创建发布步骤生成的上传URL
-          asset_path: artifacts/macos/heaven # 上传的文件路径
-          asset_name: heaven-macos-aarch64 # 上传的文件名
+          asset_path: artifacts/macos/imgtool # 上传的文件路径
+          asset_name: imgtool-macos-aarch64 # 上传的文件名
           asset_content_type: application/octet-stream # 文件内容类型
 
       # 上传Windows aarch64平台的构建产物到发布页面
@@ -204,6 +204,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }} # 使用GitHub令牌进行身份验证
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # 使用创建发布步骤生成的上传URL
-          asset_path: artifacts/windows/heaven.exe # 上传的文件路径
-          asset_name: heaven-windows-aarch64.exe # 上传的文件名
+          asset_path: artifacts/windows/imgtool.exe # 上传的文件路径
+          asset_name: imgtool-windows-aarch64.exe # 上传的文件名
           asset_content_type: application/octet-stream # 文件内容类型
